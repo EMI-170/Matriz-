@@ -1,29 +1,26 @@
 package org.uniquindio.edu.co.poo.app;
 
-import org.uniquindio.edu.co.poo.model.Matriz;
+import org.uniquindio.edu.co.poo.model.*;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        int filas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de filas:"));
-        int columnas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número de columnas:"));
-        int giros = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de giros (90° a la derecha):"));
+        ArrayList<Figura> figuras = new ArrayList<>();
 
-        // Crear matriz
-        int[][] matriz = Matriz.crearMatriz(filas, columnas);
+        figuras.add(new Circulo(3.0));
+        figuras.add(new Cuadrado(4.0));
+        figuras.add(new Triangulo(5.0));
 
-        // Mostrar matriz original
-        JOptionPane.showMessageDialog(null, "Matriz original:\n" + Matriz.MostrarMatriz(matriz));
-
-        // Girar matriz n veces
-        for (int i = 0; i < giros; i++) {
-            matriz = Matriz.girarMatrizDerecha(matriz);
+        for (Figura figuraAux : figuras) {
+            System.out.println(figuraAux.toString());
+            System.out.println("Área: " + figuraAux.calcularArea());
+            System.out.println("Perímetro: " + figuraAux.calcularPerimetro());
+            System.out.println("-----------");
         }
-
-        // Mostrar matriz girada
-        JOptionPane.showMessageDialog(null, "Matriz girada:\n" + Matriz.MostrarMatriz(matriz));
     }
 }
+
